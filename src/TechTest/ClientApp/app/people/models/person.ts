@@ -37,15 +37,18 @@ export class Person implements IPerson {
     //
     // Example: 'Bo Bob' is a palindrome.
 
+      // Remove white space between the names and turn string to lowercase.
       var lowerFullNameNoSpace: string = this.fullName.replace(/\s/g, "").toLowerCase();
       var isPalindrome = false;
 
+      //Split lower case full name string to char array so that I can create a string from it.
       var charArr = lowerFullNameNoSpace.split("");
       var palindromeStr = "";
       for (let i = charArr.length - 1; i >= 0; i--) {
           palindromeStr += charArr[i];
       }
 
+      //Check if palindrome string matches the original full name string.
       if (palindromeStr.localeCompare(lowerFullNameNoSpace) == 0) {
           isPalindrome = true;
       }

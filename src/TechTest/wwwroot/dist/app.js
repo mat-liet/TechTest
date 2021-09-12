@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "26434710758fd4ab14f3"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "7b014917cb62ade44302"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -4043,13 +4043,16 @@ class Person {
         // spaces and should also be case insensitive.
         //
         // Example: 'Bo Bob' is a palindrome.
+        // Remove white space between the names and turn string to lowercase.
         var lowerFullNameNoSpace = this.fullName.replace(/\s/g, "").toLowerCase();
         var isPalindrome = false;
+        //Split lower case full name string to char array so that I can create a string from it.
         var charArr = lowerFullNameNoSpace.split("");
         var palindromeStr = "";
         for (let i = charArr.length - 1; i >= 0; i--) {
             palindromeStr += charArr[i];
         }
+        //Check if palindrome string matches the original full name string.
         if (palindromeStr.localeCompare(lowerFullNameNoSpace) == 0) {
             isPalindrome = true;
         }
@@ -21427,7 +21430,7 @@ PeopleList = __decorate([
 /***/ "app/people/list/people-list.html":
 /***/ (function(module, exports) {
 
-module.exports = "<template>\n  \n  <h2 class=\"title\">${heading}</h2>\n  <table class=\"table is-striped is-fullwidth\">\n    <thead>\n      <tr>\n        <th>Name</th>\n        <th>Palindrome</th>\n        <th>Authorised</th>\n        <th>Enabled</th>\n        <th>Colours</th>\n      </tr>\n    </thead>\n    <tbody>\n      \n      <!--\n        TODO: Step 6\n        Add styles to Palindrome, Authorised and Enabled values.\n        When the value is Yes the text colour should be Green.\n        When the value is No the text colour should be Red.\n      -->\n\n      <tr repeat.for=\"person of people\" person.bind=\"person\">\n        <td><a class=\"is-link\" href=\"/people/${person.id}\">${person.fullName}</a></td>\n        <td>${person.palindrome ? 'Yes' : 'No'}</td>\n        <td>${person.authorised ? 'Yes' : 'No'}</td>\n        <td>${person.enabled ? 'Yes' : 'No'}</td>\n        <td>${person.colours | colourNames }</td>\n      </tr>\n    </tbody>\n  </table>\n\n</template>\n";
+module.exports = "<template>\n  \n    <h2 class=\"title\">${heading}</h2>\n    <table class=\"table is-striped is-fullwidth\">\n        <thead>\n            <tr>\n                <th>Name</th>\n                <th>Palindrome</th>\n                <th>Authorised</th>\n                <th>Enabled</th>\n                <th>Colours</th>\n            </tr>\n        </thead>\n        <tbody>\n\n            <!--\n              TODO: Step 6\n              Add styles to Palindrome, Authorised and Enabled values.\n              When the value is Yes the text colour should be Green.\n              When the value is No the text colour should be Red.\n            -->\n\n            <tr repeat.for=\"person of people\" person.bind=\"person\">\n                <td><a class=\"is-link\" href=\"/people/${person.id}\">${person.fullName}</a></td>\n                <td style=\"color:${person.palindrome ? 'green' : 'red'}\">${person.palindrome ? 'Yes' : 'No'}</td>\n                <td style=\"color:${person.authorised ? 'green' : 'red'}\">${person.authorised ? 'Yes' : 'No'}</td>\n                <td style=\"color:${person.enabled ? 'green' : 'red'}\">${person.enabled ? 'Yes' : 'No'}</td>\n                <td>${person.colours | colourNames }</td>\n            </tr>\n        </tbody>\n    </table>\n\n</template>\n";
 
 /***/ }),
 

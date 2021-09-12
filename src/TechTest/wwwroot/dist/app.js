@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7b014917cb62ade44302"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4107f04f2be198740021"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -21350,6 +21350,7 @@ let PersonEdit = class PersonEdit {
         this.routerConfig.navModel.setTitle(`Update ${this.person.fullName}`);
     }
     colourMatcher(favouriteColour, checkBoxColour) {
+        console.log("Colour: " + favouriteColour + "\nCheckbox: " + checkBoxColour);
         return favouriteColour.id === checkBoxColour.id;
     }
     async submit() {
@@ -21359,7 +21360,16 @@ let PersonEdit = class PersonEdit {
         // Send a JSON request to the API with the newly updated
         // this.person object. If the response is successful then
         // the user should be navigated to the list page.
-        throw new Error('Not Implemented');
+        const updateResponse = this.http.fetch('/people/' + this.person.id, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.person)
+        });
+        if ((await updateResponse).status == 200) {
+            this.router.navigate('people');
+        }
     }
     cancel() {
         this.router.navigate('people');

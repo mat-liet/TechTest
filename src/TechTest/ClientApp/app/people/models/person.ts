@@ -39,11 +39,11 @@ export class Person implements IPerson {
 
       // Remove white space between the names and turn string to lowercase.
       var lowerFullNameNoSpace: string = this.fullName.replace(/\s/g, "").toLowerCase();
-      var isPalindrome = false;
-
+      
       //Split lower case full name string to char array so that I can create a string from it.
       var charArr = lowerFullNameNoSpace.split("");
       var palindromeStr = "";
+      var isPalindrome = false;
       for (let i = charArr.length - 1; i >= 0; i--) {
           palindromeStr += charArr[i];
       }

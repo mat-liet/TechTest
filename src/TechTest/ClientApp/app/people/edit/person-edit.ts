@@ -4,6 +4,12 @@ import { HttpClient, json } from 'aurelia-fetch-client';
 import { Person } from '../models/person';
 import { IColour } from '../interfaces/icolour';
 import { IPerson } from '../interfaces/iperson';
+import { Repeat } from 'aurelia-templating-resources';
+
+// Had to add this so that the colour checkboxes work.
+// Link to similar issue: https://github.com/aurelia/templating-resources/issues/388
+// Can remove this line to see how the colour checkboxes stop working
+Repeat.useInnerMatcher = false;
 
 @autoinject
 export class PersonEdit {

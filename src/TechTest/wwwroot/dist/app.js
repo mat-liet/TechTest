@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "979f0411a53011d8ab68"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "9d22954bf4e5cdaf8163"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -21318,6 +21318,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_router__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_fetch_client__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_person__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_templating_resources__ = __webpack_require__("aurelia-templating-resources");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -21331,6 +21332,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+// Had to add this so that the colour checkboxes work.
+// Link to similar issue: https://github.com/aurelia/templating-resources/issues/388
+// Can remove this line to see how the colour checkboxes stop working
+__WEBPACK_IMPORTED_MODULE_4_aurelia_templating_resources__["b" /* Repeat */].useInnerMatcher = false;
 let PersonEdit = class PersonEdit {
     constructor(http, router) {
         this.http = http;
@@ -21386,7 +21392,7 @@ PersonEdit = __decorate([
 /***/ "app/people/edit/person-edit.html":
 /***/ (function(module, exports) {
 
-module.exports = "<template>\n  <h2 class=\"title\">${heading}</h2>\n\n  <form role=\"form\" submit.delegate=\"submit()\">\n\n    <fieldset class=\"box\">\n      <legend>User Details</legend>\n      <div class=\"field\">\n\n        <div class=\"control\">\n          <label class=\"checkbox\">\n            <input type=\"checkbox\" checked.bind=\"person.authorised\" name=\"authorised\" /> Authorised\n          </label>\n        </div>\n\n        <div class=\"control\">\n          <label class=\"checkbox\">\n            <input type=\"checkbox\" checked.bind=\"person.enabled\" name=\"enabled\" /> Enabled\n          </label>\n        </div>\n\n      </div>\n    </fieldset>\n\n    <fieldset class=\"box\">\n      <legend>Favourite Colours</legend>\n      <div class=\"field\">\n\n          <!-- Had to add the following bits of code to fix the colour checkboxes. If you uncomment the code below these 3 divs (the code that was given to me) it will not work.\n              It will not show the checkboxes as checked. I have managed to get it work by sort of hardcoding the colours.-->\n          <div class=\"control\">\n              <label class=\"checkbox\">\n                  <input type=\"checkbox\" model.bind=\"colourOptions[0]\" checked.bind=\"person.colours\" matcher.bind=\"colourMatcher\" name=\"colours\" /> Red\n              </label>\n          </div>\n\n          <div class=\"control\">\n              <label class=\"checkbox\">\n                  <input type=\"checkbox\" model.bind=\"colourOptions[1]\" checked.bind=\"person.colours\" matcher.bind=\"colourMatcher\" name=\"colours\" /> Green\n              </label>\n          </div>\n\n          <div class=\"control\">\n              <label class=\"checkbox\">\n                  <input type=\"checkbox\" model.bind=\"colourOptions[2]\" checked.bind=\"person.colours\" matcher.bind=\"colourMatcher\" name=\"colours\" /> Blue\n              </label>\n          </div>\n\n          <!--\n          <div class=\"control\" repeat.for=\"colour of colourOptions\">\n              <label class=\"checkbox\">\n                  <input type=\"checkbox\" model.bind=\"colour\" checked.bind=\"person.colours\" matcher.bind=\"colourMatcher\" name=\"colours\" /> ${colour.name}\n              </label>\n          </div> -->\n\n      </div>\n\n    </fieldset>\n\n    <div class=\"field is-grouped\">\n\n      <div class=\"control\">\n        <input class=\"button is-link\" type=\"submit\" value=\"Save Changes\" />\n      </div>\n\n      <div class=\"control\">\n        <button class=\"button is-light\" click.delegate=\"cancel()\">Cancel</button>\n      </div>\n\n    </div>\n\n  </form>\n</template>\n";
+module.exports = "<template>\n  <h2 class=\"title\">${heading}</h2>\n\n  <form role=\"form\" submit.delegate=\"submit()\">\n\n    <fieldset class=\"box\">\n      <legend>User Details</legend>\n      <div class=\"field\">\n\n        <div class=\"control\">\n          <label class=\"checkbox\">\n            <input type=\"checkbox\" checked.bind=\"person.authorised\" name=\"authorised\" /> Authorised\n          </label>\n        </div>\n\n        <div class=\"control\">\n          <label class=\"checkbox\">\n            <input type=\"checkbox\" checked.bind=\"person.enabled\" name=\"enabled\" /> Enabled\n          </label>\n        </div>\n\n      </div>\n    </fieldset>\n\n    <fieldset class=\"box\">\n      <legend>Favourite Colours</legend>\n      <div class=\"field\">\n\n          <!-- This only works when the extra line mentioned in persion-edit.ts is added. -->\n          <div class=\"control\" repeat.for=\"colour of colourOptions\">\n              <label class=\"checkbox\">\n                  <input type=\"checkbox\" model.bind=\"colour\" checked.bind=\"person.colours\" matcher.bind=\"colourMatcher\" name=\"colours\" /> ${colour.name}\n              </label>\n          </div> \n\n      </div>\n\n    </fieldset>\n\n    <div class=\"field is-grouped\">\n\n      <div class=\"control\">\n        <input class=\"button is-link\" type=\"submit\" value=\"Save Changes\" />\n      </div>\n\n      <div class=\"control\">\n        <button class=\"button is-light\" click.delegate=\"cancel()\">Cancel</button>\n      </div>\n\n    </div>\n\n  </form>\n</template>\n";
 
 /***/ }),
 
@@ -24052,7 +24058,7 @@ function configure(config) {
 /* unused harmony export NumberRepeatStrategy */
 /* unused harmony export OneTimeBindingBehavior */
 /* unused harmony export OneWayBindingBehavior */
-/* unused harmony export Repeat */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Repeat; });
 /* unused harmony export RepeatStrategyLocator */
 /* unused harmony export Replaceable */
 /* unused harmony export SanitizeHTMLValueConverter */

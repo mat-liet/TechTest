@@ -26,32 +26,12 @@
       <legend>Favourite Colours</legend>
       <div class="field">
 
-          <!-- Had to add the following bits of code to fix the colour checkboxes. If you uncomment the code below these 3 divs (the code that was given to me) it will not work.
-              It will not show the checkboxes as checked. I have managed to get it work by sort of hardcoding the colours.-->
-          <div class="control">
-              <label class="checkbox">
-                  <input type="checkbox" model.bind="colourOptions[0]" checked.bind="person.colours" matcher.bind="colourMatcher" name="colours" /> Red
-              </label>
-          </div>
-
-          <div class="control">
-              <label class="checkbox">
-                  <input type="checkbox" model.bind="colourOptions[1]" checked.bind="person.colours" matcher.bind="colourMatcher" name="colours" /> Green
-              </label>
-          </div>
-
-          <div class="control">
-              <label class="checkbox">
-                  <input type="checkbox" model.bind="colourOptions[2]" checked.bind="person.colours" matcher.bind="colourMatcher" name="colours" /> Blue
-              </label>
-          </div>
-
-          <!--
+          <!-- This only works when the extra line mentioned in persion-edit.ts is added. -->
           <div class="control" repeat.for="colour of colourOptions">
               <label class="checkbox">
                   <input type="checkbox" model.bind="colour" checked.bind="person.colours" matcher.bind="colourMatcher" name="colours" /> ${colour.name}
               </label>
-          </div> -->
+          </div> 
 
       </div>
 

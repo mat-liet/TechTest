@@ -10,7 +10,7 @@ import { Repeat } from 'aurelia-templating-resources';
 /**
  * Had to add this so that the colour checkboxes work.
  * Link to similar issue: https://github.com/aurelia/templating-resources/issues/388
- * If this line below is removed, the checkboxes wont be checked when you enter the person edit screen.
+ * If this line below is removed, the colour checkboxes wont be checked when you enter the person edit screen.
  * You will still be able to add the colours but there will be duplicates due to the matcher not working.
  * */
 Repeat.useInnerMatcher = false;

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "4eed129cdaa0eb0f28f2"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "9ee74a1d41e5374d45ca"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -21333,9 +21333,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-// Had to add this so that the colour checkboxes work.
-// Link to similar issue: https://github.com/aurelia/templating-resources/issues/388
-// Can remove this line to see how the colour checkboxes stop working
+// 
+/**
+ * Had to add this so that the colour checkboxes work.
+ * Link to similar issue: https://github.com/aurelia/templating-resources/issues/388
+ * If this line below is removed, the colour checkboxes wont be checked when you enter the person edit screen.
+ * You will still be able to add the colours but there will be duplicates due to the matcher not working.
+ * */
 __WEBPACK_IMPORTED_MODULE_4_aurelia_templating_resources__["b" /* Repeat */].useInnerMatcher = false;
 let PersonEdit = class PersonEdit {
     constructor(http, router) {

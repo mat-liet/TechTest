@@ -30,7 +30,8 @@ namespace TechTest.Controllers
             if (personList.Count == 0)
             {
                 return new OkObjectResult(new string[] { });
-            } else
+            } 
+            else
             {
                 return new OkObjectResult(personList);
             }
@@ -49,7 +50,8 @@ namespace TechTest.Controllers
             if (person == null)
             {
                 return new NotFoundResult();
-            } else
+            } 
+            else
             {
                 return new OkObjectResult(person);
             }
@@ -80,7 +82,8 @@ namespace TechTest.Controllers
             if (updatedPerson != null)
             {
                 return new OkObjectResult(updatedPerson);
-            } else
+            } 
+            else
             {
                 return new NotFoundResult();
             }

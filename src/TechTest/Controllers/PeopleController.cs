@@ -45,13 +45,13 @@ namespace TechTest.Controllers
             // from the PeopleRepository based on the id parameter.
             // If null is returned from the PeopleRepository with
             // the supplied id then a NotFound should be returned.
-            Person personOne = PersonRepository.Get(id);
-            if (personOne == null)
+            Person person = PersonRepository.Get(id);
+            if (person == null)
             {
                 return new NotFoundResult();
             } else
             {
-                return new OkObjectResult(personOne);
+                return new OkObjectResult(person);
             }
         }
 
@@ -68,17 +68,18 @@ namespace TechTest.Controllers
             // NotFound should be returned.
             
             //Retrieve person from repo and update all properties.
-            Person oldPerson = PersonRepository.Get(id);
-            oldPerson.Enabled = personUpdate.Enabled;
-            oldPerson.Authorised = personUpdate.Authorised;
-            oldPerson.Colours = personUpdate.Colours;
+            Person person = PersonRepository.Get(id);
+            person.Enabled = personUpdate.Enabled;
+            person.Authorised = personUpdate.Authorised;
+            person.Colours = personUpdate.Colours;
 
-            Person updatedPerson = PersonRepository.Update(oldPerson);
-            Person newPerson = PersonRepository.Get(id);
+            //Update in repo
+            Person updatedPerson = PersonRepository.Update(person);
 
-            if (updatedPerson == newPerson)
+            //If person has been successfully updated, send result otherwise, throw exception.
+            if (updatedPerson != null)
             {
-                return new OkObjectResult(newPerson);
+                return new OkObjectResult(updatedPerson);
             } else
             {
                 return new NotFoundResult();

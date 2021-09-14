@@ -20,11 +20,12 @@ export class ColourNamesValueConverter {
           return 0;
       });
 
+      // Create string that contains all colours with ',' between them
       var colourString = "";
       for (let i = 0; i < colours.length; i++) {
-          if (i != colours.length - 1) {
+          if (i != colours.length - 1) { // If not last colour
               colourString += colours[i].name + ", ";
-          } else {
+          } else { // If last colour, add colour name to string without ',' at the end
               colourString += colours[i].name;
           }
       }

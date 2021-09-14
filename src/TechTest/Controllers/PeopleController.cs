@@ -66,6 +66,8 @@ namespace TechTest.Controllers
             // updated, the person should be returned from the endpoint.
             // If null is returned from the PeopleRepository then a
             // NotFound should be returned.
+            
+            //Retrieve person from repo and update all properties.
             Person oldPerson = PersonRepository.Get(id);
             oldPerson.Enabled = personUpdate.Enabled;
             oldPerson.Authorised = personUpdate.Authorised;

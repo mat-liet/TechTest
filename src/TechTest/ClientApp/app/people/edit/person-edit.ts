@@ -49,6 +49,8 @@ export class PersonEdit {
     // Send a JSON request to the API with the newly updated
     // this.person object. If the response is successful then
       // the user should be navigated to the list page.
+      // Create fetch response with PUT method to upgrade this.person
+      //Set content type as JSON so error 415 is avoided
       const updateResponse = this.http.fetch('/people/' + this.person.id, {
           method: 'PUT',
           headers: {
@@ -56,6 +58,7 @@ export class PersonEdit {
           },
           body: JSON.stringify(this.person)
       })
+      // Await response and if == 200 then we are good to go.
       if ((await updateResponse).status == 200) {
           this.router.navigate('people');
       }

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "9d22954bf4e5cdaf8163"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4eed129cdaa0eb0f28f2"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -21365,6 +21365,8 @@ let PersonEdit = class PersonEdit {
         // Send a JSON request to the API with the newly updated
         // this.person object. If the response is successful then
         // the user should be navigated to the list page.
+        // Create fetch response with PUT method to upgrade this.person
+        //Set content type as JSON so error 415 is avoided
         const updateResponse = this.http.fetch('/people/' + this.person.id, {
             method: 'PUT',
             headers: {
@@ -21372,6 +21374,7 @@ let PersonEdit = class PersonEdit {
             },
             body: JSON.stringify(this.person)
         });
+        // Await response and if == 200 then we are good to go.
         if ((await updateResponse).status == 200) {
             this.router.navigate('people');
         }
@@ -21474,12 +21477,13 @@ class ColourNamesValueConverter {
             }
             return 0;
         });
+        // Create string that contains all colours with ',' between them
         var colourString = "";
         for (let i = 0; i < colours.length; i++) {
-            if (i != colours.length - 1) {
+            if (i != colours.length - 1) { // If not last colour
                 colourString += colours[i].name + ", ";
             }
-            else {
+            else { // If last colour, add colour name to string without ',' at the end
                 colourString += colours[i].name;
             }
         }
